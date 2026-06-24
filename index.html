@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sawarna Food - Pemesanan Digital</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased min-h-screen pb-24">
+
+    <header class="bg-orange-500 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-md mx-auto px-4 py-3 flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-extrabold tracking-tight">SAWARNA FOOD</h1>
+                <p class="text-xs text-orange-100 font-medium">Seafood Segar & Harga Terjangkau</p>
+            </div>
+            <div class="bg-orange-600 px-3 py-1.5 rounded-full text-xs font-bold flex items-center gap-1">
+                <span>📍 Meja No:</span>
+                <span id="table-number" class="text-yellow-200">05</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-md mx-auto px-4 mt-4">
+        
+        <div class="bg-gradient-to-br from-orange-50 to-orange-100 border border-orange-200 p-4 rounded-2xl mb-6 shadow-sm">
+            <h2 class="text-base font-bold text-orange-900 mb-1">Selamat Datang di Sawarna Food! 🦀</h2>
+            <p class="text-xs text-orange-800 leading-relaxed">Silakan pilih menu seafood favorit Anda di bawah ini. Makanan akan langsung diantar ke meja setelah pesanan dikonfirmasi.</p>
+        </div>
+
+        <h3 class="text-lg font-bold mb-3 flex items-center gap-2">
+            <span class="w-2 h-6 bg-orange-500 rounded-full"></span> Menu Andalan Kami
+        </h3>
+        
+        <div class="space-y-4" id="menu-container">
+            <div class="bg-white p-3 rounded-2xl shadow-xs border border-slate-100 flex gap-3 items-center">
+                <div class="w-20 h-20 bg-orange-100 rounded-xl flex items-center justify-center text-3xl shrink-0">🦀</div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-base text-slate-900">Kepiting Saus Padang</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">Kepiting segar dengan limpahan saus Padang pedas manis.</p>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="font-extrabold text-orange-600 text-sm">Rp 45.000</span>
+                        <button onclick="addToCart('Kepiting Saus Padang', 45000)" class="bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs px-4 py-2 rounded-xl shadow-xs transition-colors active:scale-95">
+                            + Tambah
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-3 rounded-2xl shadow-xs border border-slate-100 flex gap-3 items-center">
+                <div class="w-20 h-20 bg-orange-100 rounded-xl flex items-center justify-center text-3xl shrink-0">🦐</div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-base text-slate-900">Udang Goreng Tepung</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">Udang krispi renyah di luar, lembut di dalam.</p>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="font-extrabold text-orange-600 text-sm">Rp 30.000</span>
+                        <button onclick="addToCart('Udang Goreng Tepung', 30000)" class="bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs px-4 py-2 rounded-xl shadow-xs transition-colors active:scale-95">
+                            + Tambah
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-3 rounded-2xl shadow-xs border border-slate-100 flex gap-3 items-center">
+                <div class="w-20 h-20 bg-orange-100 rounded-xl flex items-center justify-center text-3xl shrink-0">🐟</div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-base text-slate-900">Ikan Bakar Jimbaran</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">Ikan gurame segar dibakar dengan bumbu khas Bali.</p>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="font-extrabold text-orange-600 text-sm">Rp 35.000</span>
+                        <button onclick="addToCart('Ikan Bakar Jimbaran', 35000)" class="bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs px-4 py-2 rounded-xl shadow-xs transition-colors active:scale-95">
+                            + Tambah
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-white p-3 rounded-2xl shadow-xs border border-slate-100 flex gap-3 items-center">
+                <div class="w-20 h-20 bg-orange-100 rounded-xl flex items-center justify-center text-3xl shrink-0">🍹</div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-base text-slate-900">Es Jeruk Kelapa Segar</h4>
+                    <p class="text-xs text-slate-500 mt-0.5">Kombinasi jeruk peras alami dan kelapa muda muda.</p>
+                    <div class="flex justify-between items-center mt-2">
+                        <span class="font-extrabold text-orange-600 text-sm">Rp 12.000</span>
+                        <button onclick="addToCart('Es Jeruk Kelapa Segar', 12000)" class="bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs px-4 py-2 rounded-xl shadow-xs transition-colors active:scale-95">
+                            + Tambah
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="cart-bar" class="fixed bottom-0 left-0 right-0 bg-white border-t border-slate-200 shadow-xl p-4 hidden z-40">
+        <div class="max-w-md mx-auto flex justify-between items-center">
+            <div>
+                <p class="text-xs text-slate-500 font-semibold" id="cart-count">0 Item Terpilih</p>
+                <p class="text-lg font-extrabold text-orange-600" id="cart-total">Rp 0</p>
+            </div>
+            <button onclick="openCheckoutModal()" class="bg-orange-500 hover:bg-orange-600 text-white font-bold text-sm px-6 py-3 rounded-xl shadow-md transition-all flex items-center gap-2">
+                Lanjut Bayar ➔
+            </button>
+        </div>
+    </div>
+
+    <div id="checkout-modal" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-50 flex items-end justify-center hidden">
+        <div class="bg-white w-full max-w-md rounded-t-3xl p-6 max-h-[85vh] overflow-y-auto shadow-2xl">
+            <div class="w-12 h-1 bg-slate-300 rounded-full mx-auto mb-4"></div>
+            
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-lg font-bold text-slate-900">Konfirmasi & Pembayaran</h3>
+                <button onclick="closeCheckoutModal()" class="text-slate-400 hover:text-slate-600 text-2xl font-bold">&times;</button>
+            </div>
+
+            <div class="bg-slate-50 p-4 rounded-xl mb-4">
+                <p class="text-xs font-bold text-slate-500 mb-2 uppercase tracking-wider">Item Pesanan:</p>
+                <div id="modal-items-list" class="space-y-2 text-sm text-slate-700">
+                    </div>
+                <div class="border-t border-slate-200 mt-3 pt-3 flex justify-between font-extrabold text-base text-slate-900">
+                    <span>Total Pembayaran:</span>
+                    <span id="modal-total-price" class="text-orange-600">Rp 0</span>
+                </div>
+            </div>
+
+            <p class="text-sm font-bold text-slate-800 mb-2">Pilih Metode Pembayaran:</p>
+            <div class="space-y-3">
+                <label class="flex items-center gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:border-orange-500 transition-colors">
+                    <input type="radio" name="payment-method" value="qris" checked class="w-5 h-5 text-orange-500 focus:ring-orange-500">
+                    <div>
+                        <p class="text-sm font-bold text-slate-900">QRIS (OVO, Dana, GoPay, LinkAja)</p>
+                        <p class="text-xs text-slate-500">Bayar otomatis lewat scan e-wallet handphone Anda.</p>
+                    </div>
+                </label>
+
+                <label class="flex items-center gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:border-orange-500 transition-colors">
+                    <input type="radio" name="payment-method" value="debit" class="w-5 h-5 text-orange-500 focus:ring-orange-500">
+                    <div>
+                        <p class="text-sm font-bold text-slate-900">Kartu Debit / Transfer Bank</p>
+                        <p class="text-xs text-slate-500">Mendukung BCA, Mandiri, BRI, BNI.</p>
+                    </div>
+                </label>
+
+                <label class="flex items-center gap-3 p-3 border border-slate-200 rounded-xl cursor-pointer hover:border-orange-500 transition-colors">
+                    <input type="radio" name="payment-method" value="cashier" class="w-5 h-5 text-orange-500 focus:ring-orange-500">
+                    <div>
+                        <p class="text-sm font-bold text-slate-900">Bayar Langsung di Kasir Tunai</p>
+                        <p class="text-xs text-slate-500">Dapatkan kode pembayaran dan tunjukkan ke kasir.</p>
+                    </div>
+                </label>
+            </div>
+
+            <button onclick="processPayment()" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-3.5 rounded-xl shadow-md mt-6 text-base tracking-wide transition-all active:scale-98">
+                Proses Pesanan Sekarang
+            </button>
+        </div>
+    </div>
+
+    <div id="success-modal" class="fixed inset-0 bg-black/70 backdrop-blur-xs z-50 flex items-center justify-center p-4 hidden">
+        <div class="bg-white w-full max-w-sm rounded-2xl p-6 text-center shadow-2xl">
+            <div class="w-16 h-16 bg-green-100 text-green-500 rounded-full flex items-center justify-center text-3xl mx-auto mb-4">✓</div>
+            <h3 class="text-xl font-bold text-slate-900 mb-2">Pesanan Berhasil!</h3>
+            <p id="success-msg" class="text-sm text-slate-600 mb-4">Pesanan Anda telah diteruskan ke dapur.</p>
+            
+            <div id="cashier-code-box" class="bg-orange-50 border border-orange-200 p-4 rounded-xl mb-4 hidden">
+                <p class="text-xs font-semibold text-orange-700">KODE PEMBAYARAN KASIR:</p>
+                <p id="cashier-code" class="text-2xl font-black text-orange-600 tracking-widest mt-1">SWN-992X</p>
+                <p class="text-[11px] text-slate-500 mt-2">Tunjukkan kode ini ke kasir untuk melakukan pembayaran tunai.</p>
+            </div>
+
+            <button onclick="resetApp()" class="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl transition-all">
+                Selesai / Pesan Lagi
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Ambil nomor meja dari URL parameter jika ada (Contoh: website.com/?meja=05)
+        const urlParams = new URLSearchParams(window.location.search);
+        const meja = urlParams.get('meja');
+        if(meja) {
+            document.getElementById('table-number').innerText = meja;
+        }
+
+        // State keranjang belanja
+        let cart = {};
+
+        function addToCart(name, price) {
+            if(cart[name]) {
+                cart[name].qty += 1;
+            } else {
+                cart[name] = { price: price, qty: 1 };
+            }
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            let totalItem = 0;
+            let totalPrice = 0;
+
+            for (let item in cart) {
+                totalItem += cart[item].qty;
+                totalPrice += (cart[item].price * cart[item].qty);
+            }
+
+            const cartBar = document.getElementById('cart-bar');
+            if(totalItem > 0) {
+                cartBar.classList.remove('hidden');
+                document.getElementById('cart-count').innerText = `${totalItem} Item Terpilih`;
+                document.getElementById('cart-total').innerText = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+            } else {
+                cartBar.classList.add('hidden');
+            }
+        }
+
+        function openCheckoutModal() {
+            const listContainer = document.getElementById('modal-items-list');
+            listContainer.innerHTML = '';
+            let totalPrice = 0;
+
+            for (let item in cart) {
+                let cost = cart[item].price * cart[item].qty;
+                totalPrice += cost;
+                listContainer.innerHTML += `
+                    <div class="flex justify-between items-center">
+                        <span>${item} <strong class="text-orange-600">x${cart[item].qty}</strong></span>
+                        <span class="font-medium">Rp ${cost.toLocaleString('id-ID')}</span>
+                    </div>
+                `;
+            }
+
+            document.getElementById('modal-total-price').innerText = `Rp ${totalPrice.toLocaleString('id-ID')}`;
+            document.getElementById('checkout-modal').classList.remove('hidden');
+        }
+
+        function closeCheckoutModal() {
+            document.getElementById('checkout-modal').classList.add('hidden');
+        }
+
+        function processPayment() {
+            const method = document.querySelector('input[name="payment-method"]:checked').value;
+            const successModal = document.getElementById('success-modal');
+            const cashierBox = document.getElementById('cashier-code-box');
+            const successMsg = document.getElementById('success-msg');
+            
+            closeCheckoutModal();
+
+            if(method === 'cashier') {
+                // Generate acak kode khusus kasir
+                const randomCode = 'SWN-' + Math.floor(1000 + Math.random() * 9000);
+                document.getElementById('cashier-code').innerText = randomCode;
+                cashierBox.classList.remove('hidden');
+                successMsg.innerText = "Pesanan Anda sudah dicatat! Silakan menuju kasir untuk menyelesaikan transaksi.";
+            } else if(method === 'qris') {
+                cashierBox.classList.add('hidden');
+                successMsg.innerText = "Pembayaran QRIS berhasil dikonfirmasi. Pesanan segera dimasak!";
+            } else {
+                cashierBox.classList.add('hidden');
+                successMsg.innerText = "Pembayaran Kartu/Transfer berhasil. Pesanan Anda sedang diproses.";
+            }
+
+            successModal.classList.remove('hidden');
+        }
+
+        function resetApp() {
+            cart = {};
+            updateCartUI();
+            document.getElementById('success-modal').classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
